@@ -2,7 +2,7 @@
 macOS Initial Access Payload Generator
 
 ## Usage: 
-1. Install Xcode on build machine
+1. Install Xcode on build machine (Required for Installer Package w/ Installer Plugin)
 2. Install python requirements
 ```
 sudo pip3 install -r requirements.txt
@@ -14,6 +14,12 @@ python3 mystikal.py
 ```
 5. Select your desired payload from the options
 ```
+ _______               __   __ __           __
+|   |   |.--.--.-----.|  |_|__|  |--.---.-.|  |
+|       ||  |  |__ --||   _|  |    <|  _  ||  |
+|__|_|__||___  |_____||____|__|__|__|___._||__|
+         |_____|
+         
 Mystikal: macOS Payload Generator
 Main Choice: Choose 1 of 8 choices
 Choose 1 for Installer Packages
