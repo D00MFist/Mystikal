@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ConsentText</key>
+	<dict>
+		<key>default</key>
+		<string>CONSENT_TEXT</string>
+	</dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>IsRemovable</key>
+			<true/>
+            <key>Icon</key>
+			<data>BASE64_IMAGE</data>
+			<key>Label</key>
+			<string>ICON_LABEL</string>
+			<key>PayloadDescription</key>
+			<string>PAYLOAD_DESCRIPTION</string>
+			<key>PayloadDisplayName</key>
+			<string>PAYLOAD_DISPLAYNAME</string>
+			<key>PayloadIdentifier</key>
+			<string>COM.PAYLOAD.IDENTIFIER</string>
+			<key>PayloadType</key>
+			<string>com.apple.webClip.managed</string>
+			<key>PayloadUUID</key>
+			<string>UUID</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>Precomposed</key>
+			<false/>
+			<key>URL</key>
+			<string>WEBLOC_URL</string>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>PAYLOAD_PARENT_DESCRIPTION</string>
+	<key>PayloadDisplayName</key>
+	<string>PAYLOAD_PARENT_DISPLAYNAME</string>
+	<key>PayloadIdentifier</key>
+	<string>COM.OUTER.PAYLOADIDENTIFIER</string>
+	<key>PayloadOrganization</key>
+	<string>PAYLOAD_ORGANIZATION</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>3A618AD7-1E94-4A5F-8F4C-C3CDE5129ADF</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

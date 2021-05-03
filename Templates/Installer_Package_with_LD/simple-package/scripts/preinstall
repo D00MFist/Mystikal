@@ -1,0 +1,4 @@
+#!/bin/bash
+cp files/com.simple.plist "/Library/LaunchDaemons/com.simple.agent.plist"
+cp files/SimpleStarter.js "/Library/Application Support/SimpleStarter.js"
+exit 0

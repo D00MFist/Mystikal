@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<installer-gui-script minSpecVersion="1">
+    <title>Package Installer</title>
+    <pkg-ref id="install.pkg"/>
+    <options allow-external-scripts="yes"/>
+    <choices-outline>
+        <line choice="default">
+            <line choice="install.pkg"/>
+        </line>
+    </choices-outline>
+    <choice id="default"/>
+    <choice id="install.pkg" visible="false">
+        <pkg-ref id="install.pkg"/>
+    </choice>
+    <pkg-ref id="install.pkg" version="1.0.0" onConclusion="none">install.pkg</pkg-ref>
+    <installation-check script="installation_check()"/>
+    <script><![CDATA[
+
+function installation_check () {
+    // Run a custom script
+    exit_code = system.run('templatescript');
+    if (exit_code != 0) {
+        // need to set error type
+        my.result.type = "Fatal"
+        my.result.message = "Install failed"
+        return false
+    }
+    return true
+}
+
+    ]]></script>
+</installer-gui-script>
