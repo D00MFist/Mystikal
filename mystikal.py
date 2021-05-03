@@ -15,6 +15,14 @@ from Modules.Macro_SYLK_Excel import *
 from Modules.DMG import *
 from Modules.PDF import *
 
+print("""\
+ _______               __   __ __           __
+|   |   |.--.--.-----.|  |_|__|  |--.---.-.|  |
+|       ||  |  |__ --||   _|  |    <|  _  ||  |
+|__|_|__||___  |_____||____|__|__|__|___._||__|
+         |_____|
+""")
+
 def main():
     print("Mystikal: macOS Initial Access Payload Generator")
     Path("./Payloads/").mkdir(parents=True, exist_ok=True)
