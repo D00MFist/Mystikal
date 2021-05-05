@@ -1,6 +1,9 @@
 # Mystikal
 macOS Initial Access Payload Generator
 
+Related Blog Post:
+- https://posts.specterops.io/introducing-mystikal-4fbd2f7ae520
+
 ## Usage: 
 1. Install Xcode on build machine (Required for Installer Package w/ Installer Plugin)
 2. Install python requirements
