@@ -76,7 +76,7 @@ def macro_word():
 
         print("Notes: \n"
               "1) Copy the macro from Payloads/MacroWord_Payload/macro.txt to past into Word Doc \n"
-              "2) When the macro is executed it will save to ~/Library/Containers/com.microsoft.Word/Data/word.js)
+              "2) When the macro is executed it will save to ~/Library/Containers/com.microsoft.Word/Data/word.js")
 
 
 
