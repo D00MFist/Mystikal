@@ -86,7 +86,7 @@ def dmg():
               "2) Payload execution does not occur until the user runs the application (not just installation)")
         try:
             while True:
-                pending = asyncio.Task.all_tasks()
+                pending = asyncio.all_tasks()
                 plist = []
                 for p in pending:
                     if p._coro.__name__ != "main" and p._state == "PENDING":
@@ -96,7 +96,7 @@ def dmg():
                 else:
                     await asyncio.gather(*plist)
         except KeyboardInterrupt:
-            pending = asyncio.Task.all_tasks()
+            pending = asyncio.all_tasks()
             for t in pending:
                 t.cancel()    
 
