@@ -79,7 +79,7 @@ def sylk_macros_excel():
         await scripting()
         try:
             while True:
-                pending = asyncio.Task.all_tasks()
+                pending = asyncio.all_tasks()
                 plist = []
                 for p in pending:
                     if p._coro.__name__ != "main" and p._state == "PENDING":
@@ -89,7 +89,7 @@ def sylk_macros_excel():
                 else:
                     await asyncio.gather(*plist)
         except KeyboardInterrupt:
-            pending = asyncio.Task.all_tasks()
+            pending = asyncio.all_tasks()
             for t in pending:
                 t.cancel()    
 
