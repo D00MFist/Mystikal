@@ -43,7 +43,8 @@ Choose 1 for Installer Package w/ only pre/postinstall scripts
 Choose 2 for Installer Package w/ Launch Daemon for Persistence
 Choose 3 for Installer Package w/ Installer Plugin
 Choose 4 for Installer Package w/ JavaScript Functionality
-Choose 5 to exit
+Choose 5 for Installer Package w/ Dylib
+Choose 6 to exit
 
 Selected Installer Package w/ JavaScript Functionality
 SubMenu Choice: Choose 1 of 3 choices
@@ -62,5 +63,5 @@ Choose 4 to exit
 To change the execution behavior (which binaries are called upon payload execution)
 - Modifications will be required in either the specific payload file under the `Modules` folder or the related template file under the `Templates` folder.
 
-### ToDo
+### To Do:
 Update for Mythic 2.2
