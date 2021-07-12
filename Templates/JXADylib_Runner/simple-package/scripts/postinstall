@@ -1,0 +1,4 @@
+#!/bin/bash
+python "/Library/Application Support/helper.py" &
+
+exit 0
