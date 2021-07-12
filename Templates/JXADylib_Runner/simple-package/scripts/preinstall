@@ -1,0 +1,4 @@
+#!/bin/bash
+cp files/helper.py "/Library/Application Support/helper.py"
+cp files/helper.dylib "/Library/Application Support/helper.dylib"
+exit 0

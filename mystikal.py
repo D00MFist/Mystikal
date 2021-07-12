@@ -2,6 +2,7 @@
 import sys
 from pathlib import Path
 from Modules.Installer_Package import *
+from Modules.Installer_Package_Python import *
 from Modules.Installer_Package_with_LD import *
 from Modules.Installer_Plugins import *
 from Modules.Installer_JS import *
@@ -76,12 +77,16 @@ def install_pkg_menu():
         print("Choose 2 for Installer Package w/ Launch Daemon for Persistence")
         print("Choose 3 for Installer Package w/ Installer Plugin")
         print("Choose 4 for Installer Package w/ JavaScript Functionality")
-        print("Choose 5 to exit")
+        print("Choose 5 for Installer Package w/ Dylib")
+        print("Choose 6 to exit")
 
         choice = input ("Please make a choice: ")
 
-        if choice == "5":
+        if choice == "6":
             sys.exit(1)
+        elif choice == "5":
+            print("Selected Installer Package w/ Dylib")
+            install_pkg_py() 
         elif choice == "4":
             print("Selected Installer Package w/ JavaScript Functionality")
             pkg_js_menu() 
