@@ -52,7 +52,7 @@ def install_pkg():
         # create the payload and include all commands
         # if we define commands in the payload definition, then remove the all_commands=True piece
         resp = await mythic.create_payload(p, all_commands=True, wait_for_build=True)
-        payloadDownloadid = resp.response.file_id.agent_file_id 
+        payloadDownloadid = resp.response.file["agent_file_id"]
 
         # Replace template values
         templateString = "URL"
