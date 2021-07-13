@@ -54,7 +54,7 @@ def install_js_script():
         resp = await mythic.create_payload(p, all_commands=True, wait_for_build=True)
 
         print("[*] Building Installer Package JS Script Payload")
-        payloadDownloadid = resp.response.file_id.agent_file_id
+        payloadDownloadid = resp.response.file["agent_file_id"]
   
         #Reaplace template values
         templateString = "templatescript"
