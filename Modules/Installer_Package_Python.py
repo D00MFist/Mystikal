@@ -36,7 +36,7 @@ def install_pkg_py():
             # what payload type is it
             payload_type="apfell", 
             c2_profiles={
-                "HTTP":[
+                "http":[
                         {"name": "callback_host", "value": mythic_http_callback_host},
                         {"name": "callback_interval", "value": mythic_http_callback_interval}
                     ]
