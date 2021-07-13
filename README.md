@@ -62,5 +62,8 @@ Choose 4 to exit
 To change the execution behavior (which binaries are called upon payload execution)
 - Modifications will be required in either the specific payload file under the `Modules` folder or the related template file under the `Templates` folder.
 
-### ToDo
-Update for Mythic 2.2
+### Common Issues
+Make sure mythic python package is on the latest version
+```
+python3 -m pip uninstall -y mythic && python3 -m pip install mythic
+```
