@@ -53,7 +53,7 @@ def macro_word():
         # Print the resposne
         #await json_print(resp)
 
-        payloadDownloadid = resp.response.file_id.agent_file_id 
+        payloadDownloadid = resp.response.file["agent_file_id"]
         
         url = "https://" + mythic_server_ip + ":" + mythic_server_port + "/api/v1.4/files/download/" + payloadDownloadid # modify to point to desired location or comment out and use one above
 
