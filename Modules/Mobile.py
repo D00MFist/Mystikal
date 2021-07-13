@@ -69,7 +69,7 @@ def mobile_ext():
             f.write(payload_contents)  # write out to disk
 
         print("[*] Creating Mobile Payload")
-        payloadDownloadid = resp.response.file_id.agent_file_id
+        payloadDownloadid = resp.response.file["agent_file_id"]
 
         os.system("unzip " + payload + "/Mobile_Config_Plugin.zip -d " + payload + "/temp/")
         
