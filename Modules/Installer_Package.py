@@ -80,7 +80,7 @@ def install_pkg():
         await scripting()
         try:
             while True:
-                pending = asyncio.all_tasks()
+                pending = mythic_rest.asyncio.all_tasks()
                 plist = []
                 for p in pending:
                     if p._coro.__name__ != "main" and p._state == "PENDING":
@@ -88,11 +88,11 @@ def install_pkg():
                 if len(plist) == 0:
                     exit(0)
                 else:
-                    await asyncio.gather(*plist)
+                    await mythic_rest.asyncio.gather(*plist)
         except KeyboardInterrupt:
-            pending = asyncio.all_tasks()
+            pending = mythic_rest.asyncio.all_tasks()
             for t in pending:
                 t.cancel()    
 
-    loop = asyncio.get_event_loop()
+    loop = mythic_rest.asyncio.get_event_loop()
     loop.run_until_complete(main())
