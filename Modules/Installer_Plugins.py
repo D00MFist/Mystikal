@@ -54,7 +54,7 @@ def install_plug():
         resp = await mythic.create_payload(p, all_commands=True, wait_for_build=True)
 
         print("[*] Building Installer Package w/ Plugins Payload")
-        payloadDownloadid = resp.response.file_id.agent_file_id
+        payloadDownloadid = resp.response.file["agent_file_id"]
     
         templateString = "apfellAddress"
         fin = open(payload + "/SpecialDelivery/MyInstallerPane.m", "rt")
