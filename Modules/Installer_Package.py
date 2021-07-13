@@ -1,8 +1,9 @@
 import shutil, errno, os
-from mythic import *
+from mythic import mythic_rest
 from sys import exit
 from os import system
 from Settings.MythicSettings import *
+from mythic import *
 
 def install_pkg():
     temp = "./Templates/Installer_Package"
