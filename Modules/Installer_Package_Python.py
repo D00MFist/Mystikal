@@ -1,5 +1,4 @@
 import shutil, errno, os, base64
-from mythic import mythic_rest
 from sys import exit
 from os import system
 from Settings.MythicSettings import *
