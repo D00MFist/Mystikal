@@ -62,6 +62,3 @@ Choose 4 to exit
 ### Behavior Modifications: 
 To change the execution behavior (which binaries are called upon payload execution)
 - Modifications will be required in either the specific payload file under the `Modules` folder or the related template file under the `Templates` folder.
-
-### To Do:
-Update for Mythic 2.2

