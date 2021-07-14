@@ -110,10 +110,11 @@ def mobile_ext():
         os.system("zip -ur Mobile_Config_Plugin.zip manifest.xml")
         print("[+] Built Mobile_Config_Plugin.zip")
         print("To setup: \n"
-              "1) Place the Mobile_Config_Plugin.zip on the update server and unzip. You want to host the files within the folder. \n"
+              "1) Place the Mobile_Config_Plugin.zip on the update server and unzip. You want to host the files within the folder \n"
               "2) Send the chrome.mobileconfig to the target \n"
               "3) After the target installs the profile on the next opening of Chrome the extension will download and install on target \n"
-              "4) the IP will show loopback (127.0.0.1), this is expected behavior")
+              "4) This method requires the target to be domain joined. Either Google/Apple changed behavior \n"
+              "5) The IP will show loopback (127.0.0.1), this is expected behavior")
  
 
 
