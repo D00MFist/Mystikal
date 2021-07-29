@@ -47,6 +47,7 @@ def mobile_ext():
             # give our payload a description if we want
             # need to replace with prompt on where to host
             tag="Mobile_Config",
+            selected_os="chrome",
             build_parameters=[
             #{
                 {"name": "update_url", "value": mythic_update_url},
