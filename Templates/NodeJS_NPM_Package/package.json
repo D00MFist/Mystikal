@@ -1,7 +1,7 @@
 {
     "name": "Mystikal",
     "version": "1.0.0",
-    "description": "NPM Package to test Apfell detection",
+    "description": "NPM Package to test Mythic detection",
     "main": "lib.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
