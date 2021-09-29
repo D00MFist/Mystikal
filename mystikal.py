@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+from Modules.Python_PIP_Package import pip_package
+from Modules.Ruby_Gem import ruby_gem
+from Modules.NodeJS_NPM_Package import npm_package
 import sys
 from pathlib import Path
 from Modules.Installer_Package import *
@@ -37,13 +40,25 @@ def main():
         print("Choose 5 for Office Macros: XLM Macros in SYLK Files")
         print("Choose 6 for Disk Images")
         print("Choose 7 for Armed PDFs")
-        print("Choose 8 to exit")
+        print("Choose 8 for Armed Python PIP Packages")
+        print("Choose 9 for Armed Ruby Gems")
+        print("Choose 10 for Armed NodeJS NPM Packages")
+        print("Choose 11 to exit")
 
         choice = input ("Please make a choice: ")
 
-        if choice == "8":
+        if choice == "11":
             print("Exiting")         
             sys.exit(1)
+        elif choice == "10":
+            print("Selected Armed NodeJS NPM Package")
+            npm_package()
+        elif choice == "9":
+            print("Selected Armed Ruby Gem")
+            ruby_gem()
+        elif choice == "8":
+            print("Selected Armed Python PIP Package")
+            pip_package()
         elif choice == "7":
             print("Selected Armed PDF")
             pdf()

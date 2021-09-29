@@ -4,7 +4,7 @@ from sys import exit
 import subprocess
 from Settings.MythicSettings import *
 
-def npm_package():
+def pip_package():
     temp = "./Templates/Python_PIP_Package/"
     payload = "./Payloads/Python_PIP_Package_Payload/"
 

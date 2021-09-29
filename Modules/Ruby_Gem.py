@@ -4,7 +4,7 @@ from sys import exit
 import subprocess
 from Settings.MythicSettings import *
 
-def npm_package():
+def ruby_gem():
     temp = "./Templates/Ruby_Gem/"
     payload = "./Payloads/Ruby_Gem_Payload/"
 
