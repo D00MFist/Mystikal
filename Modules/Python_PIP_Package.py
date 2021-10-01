@@ -70,7 +70,7 @@ def pip_package():
         #  Build the payload (currently no payload)
         print("[*] Building Python PIP Package")
         os.system("chmod +x " + modifyFile)
-        print("[*] Done! Execute using Pythoon 'pip install'.")
+        print("[*] Done! Execute using Python 'pip install . ' within folder")
 
     async def main():
         await scripting()
