@@ -70,7 +70,7 @@ def ruby_gem():
         #  Build the payload (currently no payload)
         print("[*] Building Ruby Gem")
         os.system("chmod +x " + modifyFile)
-        print("[*] Done! Execute using Ruby 'bundle install'.")
+        print("[*] Done! Execute using Ruby 'bundle install' within folder")
 
     async def main():
         await scripting()
