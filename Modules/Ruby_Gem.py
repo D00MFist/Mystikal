@@ -1,5 +1,5 @@
 import shutil, errno, os
-from mythic import *
+from mythic import mythic_rest
 from sys import exit
 import subprocess
 from Settings.MythicSettings import *
