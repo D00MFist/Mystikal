@@ -24,7 +24,7 @@ python3 mystikal.py
          |_____|
          
 Mystikal: macOS Payload Generator
-Main Choice: Choose 1 of 8 choices
+Main Choice: Choose 1 of 11 choices
 Choose 1 for Installer Packages
 Choose 2 for Mobile Configuration: Chrome Extension
 Choose 3 for Mobile Configuration: Webloc File
@@ -32,7 +32,10 @@ Choose 4 for Office Macros: VBA
 Choose 5 for Office Macros: XLM Macros in SYLK Files
 Choose 6 for Disk Images
 Choose 7 for Armed PDFs
-Choose 8 to exit
+Choose 8 for Armed Python PIP Packages
+Choose 9 for Armed Ruby Gems
+Choose 10 for Armed NodeJS NPM Packages
+Choose 11 to exit
 ```
 ### Note: 
 Option 1, Option 1.4, and Option 4 have submenus shown below
