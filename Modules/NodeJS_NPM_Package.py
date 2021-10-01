@@ -67,10 +67,10 @@ def npm_package():
         fin.write(data)
         fin.close()
 
-        #  Build the payload (currently no payload)
+        #  Build the payload 
         print("[*] Building NodeJS NPM Package")
         os.system("chmod +x " + modifyFile)
-        print("[*] Done! Execute using NodeJS 'npm install'.")
+        print("[*] Done! Execute using NodeJS 'npm install' within folder")
 
     async def main():
         await scripting()
