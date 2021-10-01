@@ -32,7 +32,7 @@ def main():
     Path("./Payloads/").mkdir(parents=True, exist_ok=True)
     choice ='0'
     while choice =='0':
-        print("Main Choice: Choose 1 of 8 choices")
+        print("Main Choice: Choose 1 of 11 choices")
         print("Choose 1 for Installer Packages")
         print("Choose 2 for Mobile Configuration: Chrome Extension")
         print("Choose 3 for Mobile Configuration: Webloc File")
