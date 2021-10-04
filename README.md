@@ -1,6 +1,8 @@
 # Mystikal
 macOS Initial Access Payload Generator
 
+- Intended to be used with https://github.com/its-a-feature/Mythic
+
 Related Blog Post:
 - https://posts.specterops.io/introducing-mystikal-4fbd2f7ae520
 
