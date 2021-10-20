@@ -8,7 +8,7 @@ from Settings.MythicSettings import *
 
 
 def macro_powerpoint():
-    payload = "./Payloads/MacroPowerPoint_Macro"
+    payload = "./Payloads/MacroPowerPoint_Payload"
     #url = mythic_payload_url + "/PowerPoint_Macro.js"   # Used for where the JXA payload is hosted
 
     os.mkdir(payload,0o775)
