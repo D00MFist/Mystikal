@@ -71,5 +71,5 @@ To change the execution behavior (which binaries are called upon payload executi
 ### Common Issues
 Make sure mythic python package is on the latest version
 ```
-python3 -m pip uninstall -y mythic && python3 -m pip install mythic
+pip3 uninstall -y mythic && pip3 install mythic
 ```
