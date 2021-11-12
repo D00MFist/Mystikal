@@ -11,6 +11,7 @@ mythic_ssl=True
 # C2 Settings HTTP
 mythic_http_callback_host="http://172.16.113.140"
 mythic_http_callback_interval=4
+mythic_http_callback_port=80
 
 # C2 Settings Websocket / Leviathan 
 mythic_ws_callback_host="ws://192.168.100.200"
