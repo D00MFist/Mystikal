@@ -38,7 +38,8 @@ def install_pkg_py():
             c2_profiles={
                 "http":[
                         {"name": "callback_host", "value": mythic_http_callback_host},
-                        {"name": "callback_interval", "value": mythic_http_callback_interval}
+                        {"name": "callback_interval", "value": mythic_http_callback_interval},
+                        {"name": "callback_port", "value": mythic_http_callback_port}
                     ]
                 },
             # give our payload a description if we want
