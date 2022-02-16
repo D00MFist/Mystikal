@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-from Modules.Python_PIP_Package import pip_package
-from Modules.Ruby_Gem import ruby_gem
-from Modules.NodeJS_NPM_Package import npm_package
 import sys
 from pathlib import Path
 from Modules.Installer_Package import *
@@ -18,6 +15,14 @@ from Modules.Macro_PowerPoint import *
 from Modules.Macro_SYLK_Excel import *
 from Modules.DMG import *
 from Modules.PDF import *
+from Modules.Python_PIP_Package import pip_package
+from Modules.Python_PIP_Package_Dylib import pip_package_dylib
+from Modules.Ruby_Gem import ruby_gem
+from Modules.Ruby_Gem_Dylib import ruby_gem_dylib
+from Modules.NodeJS_NPM_Package import npm_package
+from Modules.Tcl import tcl_package
+from Modules.Tcl_Hosted import tcl_package_hosted
+
 
 print("""\
  _______               __   __ __           __
@@ -32,7 +37,7 @@ def main():
     Path("./Payloads/").mkdir(parents=True, exist_ok=True)
     choice ='0'
     while choice =='0':
-        print("Main Choice: Choose 1 of 11 choices")
+        print("Main Choice: Choose 1 of 12 choices")
         print("Choose 1 for Installer Packages")
         print("Choose 2 for Mobile Configuration: Chrome Extension")
         print("Choose 3 for Mobile Configuration: Webloc File")
@@ -43,22 +48,26 @@ def main():
         print("Choose 8 for Armed Python PIP Packages")
         print("Choose 9 for Armed Ruby Gems")
         print("Choose 10 for Armed NodeJS NPM Packages")
-        print("Choose 11 to exit")
+        print("Choose 11 for Tclsh")
+        print("Choose 12 to exit")
 
         choice = input ("Please make a choice: ")
 
-        if choice == "11":
+        if choice == "12":
             print("Exiting")         
             sys.exit(1)
+        elif choice == "11":
+            print("Selected Tclsh")
+            tcl_menu()
         elif choice == "10":
             print("Selected Armed NodeJS NPM Package")
             npm_package()
         elif choice == "9":
             print("Selected Armed Ruby Gem")
-            ruby_gem()
+            ruby_menu()
         elif choice == "8":
             print("Selected Armed Python PIP Package")
-            pip_package()
+            pip_menu()
         elif choice == "7":
             print("Selected Armed PDF")
             pdf()
@@ -115,6 +124,67 @@ def install_pkg_menu():
             print("*******Pick an option 1-4*******")
             install_pkg_menu()
 
+
+def tcl_menu():
+    choice ='0'
+    while choice =='0':
+        print("SubMenu Choice: Choose 1 of 3 choices")
+        print("Choose 1 for Tclsh w/ local files")
+        print("Choose 2 for Tclsh w/ hosted dylibs")
+        print("Choose 3 to exit")
+
+        choice = input ("Please make a choice: ")
+
+        if choice == "3":
+            sys.exit(1)
+        elif choice == "2":
+            tcl_package_hosted()
+        elif choice == "1":
+            tcl_package()
+        else:
+            print("*******Pick an option 1-3*******")
+            pip_menu()
+
+def pip_menu():
+    choice ='0'
+    while choice =='0':
+        print("SubMenu Choice: Choose 1 of 3 choices")
+        print("Choose 1 for Armed Python PIP Packages w/ osascript execution")
+        print("Choose 2 for Armed Python PIP Packages w/ dylib load")
+        print("Choose 3 to exit")
+
+        choice = input ("Please make a choice: ")
+
+        if choice == "3":
+            sys.exit(1)
+        elif choice == "2":
+            pip_package_dylib()
+        elif choice == "1":
+            pip_package()
+        else:
+            print("*******Pick an option 1-3*******")
+            pip_menu()
+
+
+def ruby_menu():
+    choice ='0'
+    while choice =='0':
+        print("SubMenu Choice: Choose 1 of 3 choices")
+        print("Choose 1 for Armed Ruby Gem w/ osascript execution")
+        print("Choose 2 for Armed Ruby Gem w/ dylib load")
+        print("Choose 3 to exit")
+
+        choice = input ("Please make a choice: ")
+
+        if choice == "3":
+            sys.exit(1)
+        elif choice == "2":
+            ruby_gem_dylib()
+        elif choice == "1":
+            ruby_gem()
+        else:
+            print("*******Pick an option 1-3*******")
+            ruby_menu()
 def office_macros_menu():
     choice ='0'
     while choice =='0':
@@ -137,7 +207,7 @@ def office_macros_menu():
         else:
             print("*******Pick an option 1-4*******")
             office_macros_menu()
-            
+                        
 def pkg_js_menu():
     choice ='0'
     while choice =='0':
