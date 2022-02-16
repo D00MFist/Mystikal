@@ -3,13 +3,13 @@
 
 # Mythic Settings
 mythic_username="mythic_admin"
-mythic_password="mythic_password"
-mythic_server_ip="172.16.113.140"
+mythic_password="mythic_pass"
+mythic_server_ip="172.16.113.149"
 mythic_server_port="7443"
 mythic_ssl=True
 
 # C2 Settings HTTP
-mythic_http_callback_host="http://172.16.113.140"
+mythic_http_callback_host="http://172.16.113.149"
 mythic_http_callback_interval=4
 mythic_http_callback_port=80
 
@@ -29,3 +29,7 @@ mythic_bookmark_link="http://172.16.113.141/simple.pkg"
 
 # Office Payload URL
 mythic_payload_url="http://172.16.113.141"
+
+# Office Payload URL
+mythic_dlopendylib_payload="http://172.16.113.141/dlopen.dylib"
+mythic_tcldylib_payload="http://172.16.113.141/tclconfig.dylib"
