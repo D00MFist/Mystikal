@@ -40,7 +40,7 @@ Choose 10 for Armed NodeJS NPM Packages
 Choose 11 to exit
 ```
 ### Note: 
-Option 1, Option 1.4, and Option 4 have submenus shown below
+Option 1, Option 1.4, Option 4, Option 8, Option 9, and Option 11 have submenus shown below
 ```
 Selected Installer Packages
 SubMenu: Choose 1 of 5 choices
@@ -63,6 +63,24 @@ Choose 1 for VBA Macros for Word
 Choose 2 for VBA Macros for Excel
 Choose 3 for VBA Macros for PowerPoint
 Choose 4 to exit
+
+Selected Armed Python PIP Package
+SubMenu Choice: Choose 1 of 3 choices
+Choose 1 for Armed Python PIP Packages w/ osascript execution
+Choose 2 for Armed Python PIP Packages w/ dylib load
+Choose 3 to exit
+
+Selected Armed Ruby Gem
+SubMenu Choice: Choose 1 of 3 choices
+Choose 1 for Armed Ruby Gem w/ osascript execution
+Choose 2 for Armed Ruby Gem w/ dylib load
+Choose 3 to exit
+
+Selected Tclsh
+SubMenu Choice: Choose 1 of 3 choices
+Choose 1 for Tclsh w/ local files
+Choose 2 for Tclsh w/ hosted dylibs
+Choose 3 to exit
 ```
 ### Behavior Modifications: 
 To change the execution behavior (which binaries are called upon payload execution)
