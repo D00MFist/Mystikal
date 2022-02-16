@@ -185,7 +185,29 @@ def ruby_menu():
         else:
             print("*******Pick an option 1-3*******")
             ruby_menu()
-            
+def office_macros_menu():
+    choice ='0'
+    while choice =='0':
+        print("SubMenu Choice: Choose 1 of 4 choices")
+        print("Choose 1 for VBA Macros for Word")
+        print("Choose 2 for VBA Macros for Excel")
+        print("Choose 3 for VBA Macros for PowerPoint")
+        print("Choose 4 to exit")
+
+        choice = input ("Please make a choice: ")
+
+        if choice == "4":
+            sys.exit(1)
+        elif choice == "3":
+            macro_powerpoint()
+        elif choice == "2":
+            macro_excel()
+        elif choice == "1":
+            macro_word()
+        else:
+            print("*******Pick an option 1-4*******")
+            office_macros_menu()
+                        
 def pkg_js_menu():
     choice ='0'
     while choice =='0':
