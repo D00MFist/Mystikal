@@ -1,3 +1,4 @@
-mythic
+mythic==0.1.0rc5
 aiohttp
 dmgbuild
+asyncio

