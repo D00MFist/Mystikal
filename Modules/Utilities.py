@@ -3,6 +3,7 @@ import logging
 from mythic import mythic
 from Settings.MythicSettings import *
 import shutil
+import datetime
 
 
 async def login_mythic(logging_level: int = logging.WARNING) -> mythic.mythic_classes.Mythic:
@@ -31,7 +32,15 @@ async def create_apfell_payload(
                                                "c2_profile_parameters": {
                                                    "callback_host": mythic_http_callback_host,
                                                    "callback_interval": mythic_http_callback_interval,
-                                                   "callback_port": mythic_http_callback_port}
+                                                   "callback_port": mythic_http_callback_port,
+                                                   "query_path_name": mythic_http_callback_query_name,
+                                                   "encrypted_exchange_check": mythic_http_callback_encrypted_key_exchange,
+                                                   "headers": mythic_http_callback_headers,
+                                                   "AESPSK": mythic_http_callback_encryption_type,
+                                                   "get_uri": mythic_http_callback_get_uri,
+                                                   "post_uri": mythic_http_callback_post_uri,
+                                                   "killdate": (datetime.datetime.today() + datetime.timedelta(days=mythic_http_callback_killdate)).strftime("%Y-%m-%d")
+                                               }
                                            }
                                        ],
                                        description=description,

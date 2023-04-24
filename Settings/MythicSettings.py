@@ -12,6 +12,15 @@ mythic_ssl = True
 mythic_http_callback_host = f"http://{mythic_server_ip}"
 mythic_http_callback_interval = 4
 mythic_http_callback_port = 80
+mythic_http_callback_headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko"
+}
+mythic_http_callback_killdate = 365  # number of days from now
+mythic_http_callback_query_name = "q"
+mythic_http_callback_get_uri = "index"
+mythic_http_callback_post_uri = "data"
+mythic_http_callback_encryption_type = "aes256_hmac"
+mythic_http_callback_encrypted_key_exchange = True
 
 # C2 Settings Websocket / Leviathan 
 mythic_ws_callback_host = f"ws://192.168.100.200"
