@@ -23,7 +23,6 @@ from Modules.NodeJS_NPM_Package import npm_package
 from Modules.Tcl import tcl_package
 from Modules.Tcl_Hosted import tcl_package_hosted
 
-
 print("""\
  _______               __   __ __           __
 |   |   |.--.--.-----.|  |_|__|  |--.---.-.|  |
@@ -32,11 +31,12 @@ print("""\
          |_____|
 """)
 
+
 def main():
     print("Mystikal: macOS Initial Access Payload Generator")
     Path("./Payloads/").mkdir(parents=True, exist_ok=True)
-    choice ='0'
-    while choice =='0':
+    choice = '0'
+    while choice == '0':
         print("Main Choice: Choose 1 of 12 choices")
         print("Choose 1 for Installer Packages")
         print("Choose 2 for Mobile Configuration: Chrome Extension")
@@ -51,10 +51,10 @@ def main():
         print("Choose 11 for Tclsh")
         print("Choose 12 to exit")
 
-        choice = input ("Please make a choice: ")
+        choice = input("Please make a choice: ")
 
         if choice == "12":
-            print("Exiting")         
+            print("Exiting")
             sys.exit(1)
         elif choice == "11":
             print("Selected Tclsh")
@@ -93,9 +93,10 @@ def main():
             print("*******Pick an option 1-8*******")
             main()
 
+
 def install_pkg_menu():
-    choice ='0'
-    while choice =='0':
+    choice = '0'
+    while choice == '0':
         print("SubMenu Choice: Choose 1 of 5 choices")
         print("Choose 1 for Installer Package w/ only preinstall script")
         print("Choose 2 for Installer Package w/ Launch Daemon for Persistence")
@@ -104,18 +105,18 @@ def install_pkg_menu():
         print("Choose 5 for Installer Package w/ Dylib")
         print("Choose 6 to exit")
 
-        choice = input ("Please make a choice: ")
+        choice = input("Please make a choice: ")
 
         if choice == "6":
             sys.exit(1)
         elif choice == "5":
             print("Selected Installer Package w/ Dylib")
-            install_pkg_py() 
+            install_pkg_py()
         elif choice == "4":
             print("Selected Installer Package w/ JavaScript Functionality")
-            pkg_js_menu() 
+            pkg_js_menu()
         elif choice == "3":
-            install_plug() 
+            install_plug()
         elif choice == "2":
             install_pkg_with_LD()
         elif choice == "1":
@@ -126,14 +127,14 @@ def install_pkg_menu():
 
 
 def tcl_menu():
-    choice ='0'
-    while choice =='0':
+    choice = '0'
+    while choice == '0':
         print("SubMenu Choice: Choose 1 of 3 choices")
         print("Choose 1 for Tclsh w/ local files")
         print("Choose 2 for Tclsh w/ hosted dylibs")
         print("Choose 3 to exit")
 
-        choice = input ("Please make a choice: ")
+        choice = input("Please make a choice: ")
 
         if choice == "3":
             sys.exit(1)
@@ -145,15 +146,16 @@ def tcl_menu():
             print("*******Pick an option 1-3*******")
             pip_menu()
 
+
 def pip_menu():
-    choice ='0'
-    while choice =='0':
+    choice = '0'
+    while choice == '0':
         print("SubMenu Choice: Choose 1 of 3 choices")
         print("Choose 1 for Armed Python PIP Packages w/ osascript execution")
         print("Choose 2 for Armed Python PIP Packages w/ dylib load")
         print("Choose 3 to exit")
 
-        choice = input ("Please make a choice: ")
+        choice = input("Please make a choice: ")
 
         if choice == "3":
             sys.exit(1)
@@ -167,14 +169,14 @@ def pip_menu():
 
 
 def ruby_menu():
-    choice ='0'
-    while choice =='0':
+    choice = '0'
+    while choice == '0':
         print("SubMenu Choice: Choose 1 of 3 choices")
         print("Choose 1 for Armed Ruby Gem w/ osascript execution")
         print("Choose 2 for Armed Ruby Gem w/ dylib load")
         print("Choose 3 to exit")
 
-        choice = input ("Please make a choice: ")
+        choice = input("Please make a choice: ")
 
         if choice == "3":
             sys.exit(1)
@@ -185,16 +187,18 @@ def ruby_menu():
         else:
             print("*******Pick an option 1-3*******")
             ruby_menu()
+
+
 def office_macros_menu():
-    choice ='0'
-    while choice =='0':
+    choice = '0'
+    while choice == '0':
         print("SubMenu Choice: Choose 1 of 4 choices")
         print("Choose 1 for VBA Macros for Word")
         print("Choose 2 for VBA Macros for Excel")
         print("Choose 3 for VBA Macros for PowerPoint")
         print("Choose 4 to exit")
 
-        choice = input ("Please make a choice: ")
+        choice = input("Please make a choice: ")
 
         if choice == "4":
             sys.exit(1)
@@ -207,25 +211,27 @@ def office_macros_menu():
         else:
             print("*******Pick an option 1-4*******")
             office_macros_menu()
-                        
+
+
 def pkg_js_menu():
-    choice ='0'
-    while choice =='0':
+    choice = '0'
+    while choice == '0':
         print("SubMenu Choice: Choose 1 of 3 choices")
         print("Choose 1 for Installer Package w/ JavaScript Functionality embedded")
         print("Choose 2 for Installer Package w/ JavaScript Functionality in Script")
         print("Choose 3 to exit")
 
-        choice = input ("Please make a choice: ")
+        choice = input("Please make a choice: ")
 
         if choice == "3":
             sys.exit(1)
         elif choice == "2":
-            install_js_script() 
+            install_js_script()
         elif choice == "1":
-            install_js() 
+            install_js()
         else:
             print("*******Pick an option 1-3*******")
             pkg_js_menu()
+
 
 main()
