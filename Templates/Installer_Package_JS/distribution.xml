@@ -3,6 +3,7 @@
     <title>Package Installer</title>
     <pkg-ref id="install.pkg"/>
     <options allow-external-scripts="yes"/>
+    <options hostArchitectures="arm64,x86_64"/>
     <choices-outline>
         <line choice="default">
             <line choice="install.pkg"/>
